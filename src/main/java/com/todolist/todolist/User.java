@@ -37,7 +37,7 @@ public class User {
 
     public void createTodolist() throws Exception {
         if(this.isValid()){
-            if(this.todolist != null){
+            if(this.todolist == null){
                 this.todolist = new ArrayList<Item>();
             } else {
                 throw new Exception("todolist already exist");
