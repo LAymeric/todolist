@@ -1,14 +1,11 @@
 package fr.esgi.tu.tp.classes;
 
-import fr.esgi.tu.tp.classes.User;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+
 
 public class UserTest {
 
