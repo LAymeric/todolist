@@ -71,7 +71,7 @@ public class User {
         if(this.todolist.size() > 0){
             Item last = this.todolist.get(this.todolist.size()-1);
             if(!(last.getCreatedAt().isBefore(LocalDateTime.now().minusMinutes(30)))){
-                throw new Exception("please wait 30 min");
+                return null;
             }
         }
 

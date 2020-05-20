@@ -89,7 +89,7 @@ public class UserTest {
     }
 
     @Test
-    public void testaddItemInTodolistNominal(){
+    public void testAddItemInTodolistNominal(){
         try {
             this.sut.createTodolist();
         } catch (Exception e) {
@@ -154,7 +154,7 @@ public class UserTest {
                 this.sut.addItemInTodolist(Item.builder()
                         .name("name")
                         .content("this is the content")
-                        .createdAt(LocalDateTime.now())
+                        .createdAt(LocalDateTime.now().plusMinutes( i * 30))
                         .build());
             }
         });
@@ -165,7 +165,7 @@ public class UserTest {
         Item item1 = Item.builder()
                 .name("name")
                 .content("this is the content")
-                .createdAt(LocalDateTime.now().minusMinutes(29))
+                .createdAt(LocalDateTime.now().minusMinutes(30))
                 .build();
 
         Item item2 = Item.builder()
@@ -181,6 +181,31 @@ public class UserTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+
+    @Test
+    public void testCanAddOtherItemBefore30Min()  {
+        Item item1 = Item.builder()
+                .name("name")
+                .content("this is the content")
+                .createdAt(LocalDateTime.now().minusMinutes(29))
+                .build();
+
+        Item item2 = Item.builder()
+                .name("name2")
+                .content("this is the content")
+                .createdAt(LocalDateTime.now())
+                .build();
+
+        try {
+            this.sut.createTodolist();
+            this.sut.addItemInTodolist(item1);
+            Assert.assertNull(this.sut.canAddItem(item2));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
 
     }
