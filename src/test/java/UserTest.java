@@ -14,6 +14,7 @@ public class UserTest {
                 .firstname("fname")
                 .lastname("lname")
                 .email("test@test.fr")
+                .password("azertyuiop")
                 .birthday(LocalDate.now().minusYears(20))
                 .build();
     }
