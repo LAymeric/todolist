@@ -144,19 +144,26 @@ public class UserTest {
     //this is the test for canAddItem
     @Test
     public void testAddItemAlreadyInTodolist(){
+        Item item1 = Item.builder()
+                .name("name")
+                .content("this is the content")
+                .createdAt(LocalDateTime.now().minusMinutes(30))
+                .build();
+
+        Item item2 = Item.builder()
+                .name("name")
+                .content("this is the content")
+                .createdAt(LocalDateTime.now())
+                .build();
+
         try {
             this.sut.createTodolist();
+            this.sut.addItemInTodolist(item1);
         } catch (Exception e) {
             e.printStackTrace();
         }
         Assert.assertThrows(Exception.class, () -> {
-            for(int i = 0; i<= 2; i++){
-                this.sut.addItemInTodolist(Item.builder()
-                        .name("name")
-                        .content("this is the content")
-                        .createdAt(LocalDateTime.now().plusMinutes( i * 30))
-                        .build());
-            }
+            this.sut.addItemInTodolist(item2);
         });
     }
 
