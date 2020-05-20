@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ItemTest {
 
@@ -17,7 +18,7 @@ public class ItemTest {
         this.sut = Item.builder()
                 .name("name")
                 .content("this is the content")
-                .createdAt(LocalDate.now())
+                .createdAt(LocalDateTime.now())
                 .build();
     }
 

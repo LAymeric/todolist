@@ -4,7 +4,9 @@ import lombok.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Getter
@@ -48,6 +50,37 @@ public class User {
         } else {
             throw new Exception("user is not valid");
         }
+    }
+
+    public void addItemInTodolist(Item item) throws Exception {
+        if(this.todolist == null) {
+            throw  new Exception("todolist is nor create");
+        }
+        if(this.canAddItem(item) == null){
+            throw new Exception("item is already in todolist");
+        }
+        if(this.todolist.size()<=10){
+            this.todolist.add(item);
+        } else {
+            throw new Exception("todolist is full");
+        }
+    }
+
+    public Item canAddItem(Item item) throws Exception{
+
+        if(this.todolist.size() > 0){
+            Item last = this.todolist.get(this.todolist.size()-1);
+            if(!(last.getCreatedAt().isBefore(LocalDateTime.now().minusMinutes(30)))){
+                throw new Exception("please wait 30 min");
+            }
+        }
+
+        Item found = this.todolist.stream().filter(it -> item.getName().equals(it.getName())).findAny().orElse(null);
+
+        if(found != null){
+            return null;
+        }
+        return item;
     }
 
 }
