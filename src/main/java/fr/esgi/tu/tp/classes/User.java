@@ -1,3 +1,5 @@
+package fr.esgi.tu.tp.classes;
+
 import lombok.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;

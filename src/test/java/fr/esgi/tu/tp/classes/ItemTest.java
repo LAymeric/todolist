@@ -1,3 +1,6 @@
+package fr.esgi.tu.tp.classes;
+
+import fr.esgi.tu.tp.classes.Item;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
