@@ -20,6 +20,19 @@ public class UserTest {
     }
 
     @Test
+    public void testIsPasswordIsTooShort(){
+        this.sut.setPassword("aaa");
+        Assert.assertFalse(sut.isValid());
+    }
+
+    @Test
+    public void testIsPasswordIsTooLong(){
+        this.sut.setPassword("aaaaaaaaaa"+"aaaaaaaaaa"+
+                "aaaaaaaaaa"+"aaaaaaaaaa"+"aaaaaaaaaa");
+        Assert.assertFalse(sut.isValid());
+    }
+
+    @Test
     public void testIsValidNominal() {
         Assert.assertTrue(this.sut.isValid());
     }
