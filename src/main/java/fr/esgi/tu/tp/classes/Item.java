@@ -17,6 +17,7 @@ public class Item {
     public boolean isValid(){
         return StringUtils.isNotBlank(this.name)
                 && StringUtils.isNotBlank(this.content)
+                && this.content.length() <= 1000
                 && this.isDateValid();
     }
 

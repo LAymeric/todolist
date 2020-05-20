@@ -1,6 +1,7 @@
 package fr.esgi.tu.tp.classes;
 
 import fr.esgi.tu.tp.classes.Item;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,6 +44,14 @@ public class ItemTest {
         Assert.assertFalse(this.sut.isValid());
     }
 
-
+    @Test
+    public void testIsNotValidContentTooLong(){
+        String s = "";
+        for(int i = 0; i< 1003; i++){
+            s += "a";
+        }
+        this.sut.setContent(s);
+        Assert.assertFalse(this.sut.isValid());
+    }
 
 }
